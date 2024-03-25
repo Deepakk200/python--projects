@@ -25,7 +25,7 @@ def startplay():
           print("player_score = ",player_score)
           print("computer_score",computer_score)
 
-      choice = input("enter y/n to continue").lower()
+          choice = input("enter y/n to continue").lower()
 
 def determine_winner(player_choice , computer_choice):
      choices = {'r': 'rock' , 'p': 'paper','s':'scissors '}
