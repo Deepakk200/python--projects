@@ -2,24 +2,50 @@ import random
 
 
 def startplay():
-      user_choice = input("Choose 'r' for rock, 'p' for paper, 's' for scissors: ").lower()
-      computer_choice = random.choice(['p','r''s'])
+      player_score = 0
+      computer_score = 0
+      choice = 'y'
+      while choice == 'y':
+          user_choice = input("Choose 'r' for rock, 'p' for paper, 's' for scissors: ").lower()
+          computer_choice = random.choice(['p','r','s'])
 
-      #determining the winner 
-      winner = determine_winner(user_choice , computer_choice)
-      return winner 
+
+          #determining the winner
+          winner = determine_winner(user_choice , computer_choice)
+          print(winner)
+          if "won" in winner:
+            player_score = player_score + 1
+          elif "lost" in winner:
+                computer_score = computer_score + 1
+          elif "tie" in winner:
+            print("player_score = ",player_score)
+            print("\ncomputer_score",computer_score)
+
+
+          print("player_score = ",player_score)
+          print("computer_score",computer_score)
+
+      choice = input("enter y/n to continue").lower()
 
 def determine_winner(player_choice , computer_choice):
      choices = {'r': 'rock' , 'p': 'paper','s':'scissors '}
      if player_choice not in choices:
             return "Invalid input! Please choose 'r', 'p', or 's'."
+     choice = 'y'
+     player_score = 0
+     computer_score = 0
+
      if player_choice == computer_choice:
-          return f"It is a Tie {choices[player_choice]}."
+            return f"It is a Tie {choices[player_choice]}."
      if (player_choice == 'r' and computer_choice == 's') or \
-       (player_choice == 's' and computer_choice == 'p') or \
-       (player_choice == 'p' and computer_choice == 'r'):
-          return f"You won! {choices[player_choice].capitalize()} beats {choices[computer_choice]}"   
+        (player_choice == 's' and computer_choice == 'p') or \
+        (player_choice == 'p' and computer_choice == 'r'):
+
+
+            return f"You won! {choices[player_choice].capitalize()} beats {choices[computer_choice]}"
      else:
-         return f"You lost! {choices[computer_choice].capitalize()} beats {choices[player_choice]}"
+          return f"You lost! {choices[computer_choice].capitalize()} beats {choices[player_choice]}"
+
+
 
 print(startplay())
